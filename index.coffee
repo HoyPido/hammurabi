@@ -112,7 +112,7 @@ ask_for_acres = (context)->
   track_strategy(context, 'ask_for_acres')
   acres = parseInt context.text.replace(/[\+|\s|\D|\,]/g, '')
   if valid_number(acres) and hammurabi.is_valid_acre(context)
-    console.log("Setting acres: #{acres}")
+    context.text = ''
     context.game_responses.acres = acres
     return no
 
@@ -126,7 +126,7 @@ ask_for_feed = (context)->
   track_strategy(context, 'ask_for_feed')
   feed = parseInt context.text.replace(/[\+|\s|\-|\D|\,]/g, '')
   if valid_number(feed) and hammurabi.is_valid_feed(context)
-    console.log("Setting feed: #{feed}")
+    context.text = ''
     context.game_responses.feed = feed
     return no
 
@@ -139,7 +139,7 @@ ask_for_seed = (context)->
   track_strategy(context, 'ask_for_seed')
   seed = parseInt context.text.replace(/[\+|\s|\-|\D|\,]/g, '')
   if valid_number(seed) and  hammurabi.is_valid_seed(context)
-    console.log("Setting seed: #{seed}")
+    context.text = ''
     context.game_responses.seed = seed
     return no
 
@@ -194,6 +194,7 @@ finish_strategy = (context)->
   if !context.game_status.ended or !context.game_status.starved
     context.game_responses = {}
     show_game_status(context)
+    ask_for_acres(context)
     return no
 
   if context.game_status.starved
