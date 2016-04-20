@@ -226,6 +226,7 @@ resolve = (bot_message)->
     send: (message)->
       my_last_message[user.id] = message
       bot_message.send message
+      return yes
   }
 
   _.any strategies, (strategy)-> strategy(context)
