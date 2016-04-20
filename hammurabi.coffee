@@ -17,7 +17,7 @@ create_game = ()->
   	internal_acres : DEFAULT_ACRES,
   	internal_bushels : DEFAULT_BUSHES,
   	total_starved: 0
-  })
+  }
 
 has_plague = ()-> _.random(1, 100) <= 15
 
