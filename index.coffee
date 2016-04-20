@@ -139,12 +139,6 @@ ask_for_seed = (context)->
 
 
 tick_strategy = (context)->
-  if !hammurabi.is_valid_move(context)
-    game_responses[context.user.id] = {}
-    context.send('Invalid move')
-    context.send('Try another move')
-    return yes
-
   track_strategy(context, 'tick')
   hammurabi.tick(context)
   return no
