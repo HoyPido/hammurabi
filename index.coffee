@@ -54,7 +54,7 @@ tutorial_strategy = (context)->
     if _.includes(users, context.user.id)
       return no
     track_strategy(context, 'tutorial')
-    users.push(contex.user.id)
+    users.push(context.user.id)
     show_tutorial(context)
     return yes
 
@@ -178,7 +178,7 @@ finish_strategy = (context)->
   context.message.send('to start a new game just type "start"')
 
 
-resolve = (message)->
+resolve = (bot_message)->
   strategies = [
     tutorial_strategy
     start_game_strategy
@@ -197,6 +197,7 @@ resolve = (message)->
     user: user
     game_status: game_status[user.id]
     responses: game_responses[user.id]
+    message: bot_message
     text : _(text).deburr().toLowerCase()
     send: (message)->
       my_last_message[user.id] = message

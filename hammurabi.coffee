@@ -52,8 +52,8 @@ tick = (context)->
   game.ended = game.year is 10
 
   game.perfomance = {
-    avg_starved: game.total_starved / game.year
-    acre_person: game.acres / game.population
+    avg_starved : game.total_starved / game.year
+    acre_person : game.acres / game.population
   }
   return context
 
