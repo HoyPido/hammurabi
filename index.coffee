@@ -192,6 +192,7 @@ show_winner = (conext)->
 finish_strategy = (context)->
   track_strategy(context, 'finish')
   if !context.game_status.ended or !context.game_status.starved
+    game_responses[context.user.id] = {}
     context.game_responses = {}
     show_game_status(context)
     ask_for_acres(context)
