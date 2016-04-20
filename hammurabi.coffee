@@ -26,19 +26,22 @@ too_many_people_died = (game)-> game.total_starved / (game.population + game.sta
 is_valid_acre = (context)->
   game = context.game_status
   tick_data = context.game_responses
+  return yes
   if tick_data.acres < 0
-    Math.abs(tick_data.acres) <= game.acres
+    tick_data.acres > -game.acres
   else
-    game.price * tick_data.acres < game.bushels
+    (game.price * tick_data.acres) < game.bushels
 
 is_valid_feed = (context)->
   game = context.game_status
   tick_data = context.game_responses
+  return yes
   0 <= tick_data.feed and tick_data.feed <= (game.bushels - tick_data.acres)
 
 is_valid_seed = (context)->
   game = context.game_status
   tick_data = context.game_responses
+  return yes
   0 <= tick_data.seed and tick_data.seed <= (game.acres + tick_data.acres) and tick_data.seed < 2 * game.bushels and tick_data.seed <= game.population * 10
 
 tick = (context)->
