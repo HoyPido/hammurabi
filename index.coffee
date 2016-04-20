@@ -84,7 +84,20 @@ start_game_strategy = (context)->
 
   return no
 
-
+log_strategy = (context)->
+  console.log ["The report for year: " + context.game_status.year
+  	"Starved: " + context.game_status.starved
+  	"Newcomers: " + context.game_status.newcomers
+  	"Population: " + context.game_status.population
+  	"Acres: " + context.game_status.acres
+  	"Bushels: " + context.game_status.bushels
+  	"Harvest: " + context.game_status.harvest
+  	"Rats: " + context.game_status.rats
+  	"Price: " + context.game_status.price
+    "Responses: #{JSON.stringify context.game_responses}"
+    "User ID: #{context.user.id}"
+  ].join('\n')
+  return no
 ask_for_acres = (context)->
   if _.isNumber(context.game_responses.acres)
     return no
@@ -189,6 +202,7 @@ resolve = (bot_message)->
   strategies = [
     tutorial_strategy
     start_game_strategy
+    log_strategy
     ask_for_acres
     ask_for_feed
     ask_for_seed
