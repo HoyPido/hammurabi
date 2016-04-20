@@ -3,9 +3,8 @@ _ = require 'lodash'
 DEFAULT_ACRES = 1000
 DEFAULT_BUSHES = 2800
 
-create_game = (base)->
-  base ?= {}
-  _.assigns(base,{
+create_game = ()->
+  {
   	year : 1,
   	starved : 0,
   	newcomers : 5,
