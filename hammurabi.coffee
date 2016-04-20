@@ -20,6 +20,7 @@ create_game = ()->
   }
 
 has_plague = ()-> _.random(1, 100) <= 15
+has_rat_problems = ()-> _.random(1, 100) <= 40
 
 too_many_people_died = (game)-> game.total_starved / (game.population + game.starved - game.newcomers) >= 0.45
 
