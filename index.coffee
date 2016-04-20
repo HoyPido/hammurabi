@@ -217,7 +217,7 @@ resolve = (bot_message)->
     visitor: ua(app.get('ga-id'), user.id, {strictCidFormat: false})
     user: user
     game_status: game_status[user.id]
-    responses: game_responses[user.id]
+    game_responses: game_responses[user.id]
     message: bot_message
     text : _(text).deburr().toLowerCase()
     send: (message)->
