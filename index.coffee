@@ -195,8 +195,8 @@ resolve = (message)->
   context = {
     visitor: ua(app.get('ga-id'), user.id, {strictCidFormat: false})
     user: user
-    game_status = game_status[user.id]
-    responses = game_responses[user.id]
+    game_status: game_status[user.id]
+    responses: game_responses[user.id]
     text : _(text).deburr().toLowerCase()
     send: (message)->
       my_last_message[user.id] = message
