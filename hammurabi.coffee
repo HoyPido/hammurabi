@@ -26,7 +26,7 @@ too_many_people_died = (game)-> game.starved / (game.population + game.starved -
 
 valid_seed = (game, tick_data)-> 0 <= tick_data.seed and tick_data.seed <= _.min[game.acres, 10 * game.population, game.bushels]
 valid_feed = (game, tick_data)-> 0 <= tick_data.feed and tick_data.feed <= game.bushels
-valid_acres = (game, tick_data)-> -game.acres <= tick_data.acres and tick_data.acres <= game.acres)
+valid_acres = (game, tick_data)-> -game.acres <= tick_data.acres and tick_data.acres <= game.acres
 
 is_valid_move = (context)-> _.all([valid_seed, valid_feed, valid_acres], (cb)-> cb(context.game_status, context.game_responses))
 
