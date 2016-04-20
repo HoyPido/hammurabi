@@ -54,7 +54,7 @@ tutorial_strategy = (context)->
     if _.includes(users, context.user.id)
       return no
     track_strategy(context, 'tutorial')
-    users.push(contex.user.id)
+    users.push(context.user.id)
     show_tutorial(context)
     return yes
 
