@@ -59,19 +59,18 @@ tutorial_strategy = (context)->
     return yes
 
 show_game_status = (context)->
-	context.message.send "The report for year: " + context.game_status.year
-	context.message.send "Starved: " + context.game_status.starved
-	context.message.send "Newcomers: " + context.game_status.newcomers
-	context.message.send "Population: " + context.game_status.population
-	context.message.send "Acres: " + context.game_status.acres
-	context.message.send "Bushels: " + context.game_status.bushels
-	context.message.send "Harvest: " + context.game_status.harvest
-	context.message.send "Rats: " + context.game_status.rats
-	context.message.send "Price: " + context.game_status.price
+	context.message.send ["The report for year: " + context.game_status.year
+                      	"Starved: " + context.game_status.starved
+                      	"Newcomers: " + context.game_status.newcomers
+                      	"Population: " + context.game_status.population
+                      	"Acres: " + context.game_status.acres
+                      	"Bushels: " + context.game_status.bushels
+                      	"Harvest: " + context.game_status.harvest
+                      	"Rats: " + context.game_status.rats
+                      	"Price: " + context.game_status.price
+                      ].join('\n')
 
 start_game_strategy = (context)->
-  if !_.isEmpty(context.game_status)
-    return no
 
   matches_word = matches_any_word actions.start_game, context.text
   if _.isEmpty(context.game_status) or matches_word
@@ -79,7 +78,6 @@ start_game_strategy = (context)->
     game_status[context.user.id] = context.game_status = hammurabi.create_game()
     game_responses[context.user.id] = context.game_responses = {}
     show_game_status(context)
-    return yes
 
   return no
 
