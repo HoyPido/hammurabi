@@ -74,7 +74,7 @@ start_game_strategy = (context)->
     return no
 
   matches_word = matches_any_word actions.start_game, context.text
-  if _.isEmpty(contex.game_status or matches_word)
+  if _.isEmpty(context.game_status) or matches_word)
     track_strategy(context, 'start_game')
     game_status[context.user.id] = context.game_status = hammurabi.create_game()
     game_responses[context.user.id] = context.game_responses = {}
