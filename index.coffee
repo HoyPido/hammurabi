@@ -182,7 +182,7 @@ resolve = (message)->
   strategies = [
     tutorial_strategy
     start_game_strategy
-    ask_for_buy_sell
+    ask_for_acres
     ask_for_feed
     ask_for_seed
     tick_strategy
