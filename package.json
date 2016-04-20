@@ -1,0 +1,23 @@
+{
+  "name": "hammurabi",
+  "version": "1.0.0",
+  "description": "Hammurabi for Facebook Messenger",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/HoyPido/hammurabi.git"
+  },
+  "keywords": [
+    "hammurabi",
+    "bot"
+  ],
+  "author": "nico@hoypido.com, fabri@hoypido.com",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/HoyPido/hammurabi/issues"
+  },
+  "homepage": "https://github.com/HoyPido/hammurabi#readme"
+}
