@@ -44,7 +44,7 @@ class FBMessage
     send_message({
       recipient: {id: @user().id}
       message:
-        text: remove_md(message)
+        text: message
     })
 
   post_message: (message)->
