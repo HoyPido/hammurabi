@@ -24,6 +24,8 @@ game_questions = {
 actions = {
   start_game : ['start', 'restart', 'cancel']
 }
+
+valid_number = (possible_number)-> _.isNumber(possible_number) and !_.isNaN(possible_number)
 matches_any_word = (keywords, text)->
     words = text.split /[\n|,]/
     for key in keywords
@@ -104,12 +106,12 @@ log_strategy = (context)->
   return no
 
 ask_for_acres = (context)->
-  if _.isNumber(context.game_responses.acres)
+  if valid_number(context.game_responses.acres)
     return no
 
   track_strategy(context, 'ask_for_acres')
   acres = parseInt context.text.replace(/[\+|\s|\D|\,]/g, '')
-  if _.isNumber(acres) and hammurabi.is_valid_acre(context)
+  if valid_number(acres) and hammurabi.is_valid_acre(context)
     console.log("Setting acres: #{acres}")
     context.game_responses.acres = acres
     return no
@@ -118,12 +120,12 @@ ask_for_acres = (context)->
 
 
 ask_for_feed = (context)->
-  if _.isNumber(context.game_responses.feed)
+  if valid_number(context.game_responses.feed)
     return no
 
   track_strategy(context, 'ask_for_feed')
   feed = parseInt context.text.replace(/[\+|\s|\-|\D|\,]/g, '')
-  if _.isNumber(feed) and hammurabi.is_valid_feed(context)
+  if valid_number(feed) and hammurabi.is_valid_feed(context)
     console.log("Setting feed: #{feed}")
     context.game_responses.feed = feed
     return no
@@ -131,12 +133,12 @@ ask_for_feed = (context)->
   return context.send _.sample(game_questions.feed)
 
 ask_for_seed = (context)->
-  if _.isNumber(context.game_responses.seed)
+  if valid_number(context.game_responses.seed)
     return no
 
   track_strategy(context, 'ask_for_seed')
   seed = parseInt context.text.replace(/[\+|\s|\-|\D|\,]/g, '')
-  if _.isNumber(seed) and  hammurabi.is_valid_seed(context)
+  if valid_number(seed) and  hammurabi.is_valid_seed(context)
     console.log("Setting seed: #{seed}")
     context.game_responses.seed = seed
     return no
