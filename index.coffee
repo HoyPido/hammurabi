@@ -197,6 +197,7 @@ resolve = (bot_message)->
     user: user
     game_status: game_status[user.id]
     responses: game_responses[user.id]
+    message: bot_message
     text : _(text).deburr().toLowerCase()
     send: (message)->
       my_last_message[user.id] = message
