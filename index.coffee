@@ -133,8 +133,9 @@ tick_strategy = (context)->
 
 show_looser = (context)->
   track_strategy(context, 'show_looser')
-  context.message.send 'You have starved over 45% of the population!\n You have been kicked out of office.\n Try again.'
-  context.message.send 'Loooooooser!'
+  context.message.send "You have starved over 45% of the population over #{context.game_status.years} years!\n You have been kicked out of office.\n Try again."
+  context.message.send "Share http://hammurabi.hoypido.com with your friends and challenge them!"
+  # send link to ranking
   giphy.random 'starved', (err, res)->
       context.message.post_message {
           as_user: yes
@@ -149,8 +150,13 @@ show_looser = (context)->
 
 show_winner = (conext)->
   track_strategy(context, 'show_winner')
-  context.message.send 'Winer!'
-  # send link to ranking
+  context.message.send 'Winner!'
+
+  game = context.game_status
+  context.message.send ["You win."
+                        "your stats are: average starved people: #{game.performance.avg_starved},"
+                        "acres per person: #{game.performance.acre_person}"
+                        "Share http://hammurabi.hoypido.com with your friends and challenge them!"].join('\n')
   giphy.random 'winner', (err, res)->
       context.message.post_message {
           as_user: yes

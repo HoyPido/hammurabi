@@ -35,7 +35,7 @@ tick = (context)->
   if has_plague
     context.message.send('A horrible plague occured!\nHalf of your population died.')
     game.population = Math.floor(game.population / 2)
-
+  game.year = game.year + 1
   game.starved = Math.max(0, game.population - Math.floor( tick_data.feed / 20))
   game.total_starved = game.total_starved + game.starved
   game.newcomers = Math.floor((20 * game.internal_acres + game.internal_bushels) / (100 * game.population)) + 1
