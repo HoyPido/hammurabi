@@ -258,7 +258,7 @@ app.get '/signup', (request, response)->
 			role: 'testers'
 	}, (err, res, body)->
 		console.log body
-		response.redirect('http://messenger.com/t/hammurabi.bot')
+		response.redirect('http://fb.me/hammurabi.bot')
 
 app.get '*', (request, response)->
 	response.render 'index.html', {
