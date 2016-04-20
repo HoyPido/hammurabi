@@ -2,7 +2,6 @@ _ = require 'lodash'
 fs = require 'fs'
 Mustache = require 'mustache'
 Request = require 'request'
-remove_md = require 'remove-markdown'
 
 pending_msgs = []
 sending = no

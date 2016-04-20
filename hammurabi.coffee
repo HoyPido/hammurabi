@@ -28,3 +28,4 @@ tick = (context)->
   if has_plague
     population = Math.floor(game.population / 2)
   bushels = game.internal_bushels + game.harvest * tick_data.seed
+
