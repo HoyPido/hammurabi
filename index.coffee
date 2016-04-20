@@ -178,7 +178,7 @@ finish_strategy = (context)->
   context.message.send('to start a new game just type "start"')
 
 
-resolve = (message)->
+resolve = (bot_message)->
   strategies = [
     tutorial_strategy
     start_game_strategy
