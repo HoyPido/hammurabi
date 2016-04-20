@@ -37,7 +37,7 @@ track_strategy = (context, strategy)->
     context.visitor.pageview("/hammurabi/#{strategy}").send()
 
 show_tutorial = (context)->
- context.message.send ['Try your hand at governing ancient Sumeria successfully for a 10 year term of office.'
+  context.message.send ['Try your hand at governing ancient Sumeria successfully for a 10 year term of office.'
                        "Hammurabi (or, the game Hamurabi), one of the earliest computer games, is the great granddaddy of strategy and resource allocation games such as Civilization."
                        "Hammurabi is named for the second millenium B.C. Babylonian king recognized for codifying laws, known as The Code of Hammurabi."
                        "The game of Hammurabi lasts 10 years, and each year you determine how to allocate your scarce bushels of grain: buying and selling acres of land, feeding your population, and planting seeds for next year's crops"
