@@ -38,7 +38,7 @@ class FBMessage
     @msg = _.last(@entry.messaging)
 
   user:->
-    {"id":@msg.sender.id}}
+    {"id":@msg.sender.id}
 
   send: (message)->
     send_message({
