@@ -40,22 +40,24 @@ show_tutorial = (context)->
  context.message.send ['Try your hand at governing ancient Sumeria successfully for a 10 year term of office.'
                        "Hammurabi (or, the game Hamurabi), one of the earliest computer games, is the great granddaddy of strategy and resource allocation games such as Civilization."
                        "Hammurabi is named for the second millenium B.C. Babylonian king recognized for codifying laws, known as The Code of Hammurabi."
-                       "The game of Hammurabi lasts 10 years, and each year you determine how to allocate your scarce bushels of grain: buying and selling acres of land, feeding your population, and planting seeds for next year's crops"].join('\n')
+                       "The game of Hammurabi lasts 10 years, and each year you determine how to allocate your scarce bushels of grain: buying and selling acres of land, feeding your population, and planting seeds for next year's crops"
+  ].join('\n')
 
- context.message.send ["The Rules:"
+  context.message.send ["The Rules:"
                       "The game lasts 10 years, with a year being one turn."
                       "Each year, enter how many bushels of grain to allocate to buying (or selling) acres of land, feeding your population, and planting crops for the next year."
                       "Each person needs 20 bushels of grain each year to live and can till at most 10 acres of land."
                       "Each acre of land requires one bushel of grain to plant seeds."
                       "The price of each acre of land fluctuates from 17 bushels per acre to 26 bushels."
                       "If the conditions in your country ever become bad enough, the people will overthrow you and you won't finish your 10 year term."
-                      "If you make it to the 11th year, your rule will be evaluated and you'll be ranked against great figures in history."].join('\n')
+                      "If you make it to the 11th year, your rule will be evaluated and you'll be ranked against great figures in history."
+  ].join('\n')
 
-context.message.send [
-  "Along the way, you'll deal with famine, plagues, fluctuating crop yields and varying prices for land."
-  "The object of the game is to last 10 years to the end of your term and to leave the city better off than how you found it."
-  "Leaders are evaluated based on how many people starved during one's leadership, and how much land per person remains after the end of the 10 year term."
-].join('\n')
+  context.message.send [
+    "Along the way, you'll deal with famine, plagues, fluctuating crop yields and varying prices for land."
+    "The object of the game is to last 10 years to the end of your term and to leave the city better off than how you found it."
+    "Leaders are evaluated based on how many people starved during one's leadership, and how much land per person remains after the end of the 10 year term."
+  ].join('\n')
 
 tutorial_strategy = (context)->
     if _.includes(users, context.user.id)
