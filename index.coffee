@@ -11,6 +11,7 @@ hammurabi = require './hammurabi'
 Parse = require 'parse/node'
 giphy = require('giphy-api')()
 users = []
+
 game_status = {}
 game_responses = {}
 my_last_message = {}
@@ -56,7 +57,7 @@ tutorial_strategy = (context)->
     track_strategy(context, 'tutorial')
     users.push(context.user.id)
     show_tutorial(context)
-    return yes
+    return no
 
 show_game_status = (context)->
 	context.message.send ["The report for year: " + context.game_status.year
@@ -75,8 +76,10 @@ start_game_strategy = (context)->
   matches_word = matches_any_word actions.start_game, context.text
   if _.isEmpty(context.game_status) or matches_word
     track_strategy(context, 'start_game')
-    game_status[context.user.id] = context.game_status = hammurabi.create_game()
-    game_responses[context.user.id] = context.game_responses = {}
+    context.game_status = hammurabi.create_game()
+    context.game_responses = {}
+    game_status[context.user.id] = context.game_status
+    game_responses[context.user.id] = context.game_responses
     show_game_status(context)
 
   return no
