@@ -24,7 +24,7 @@ has_plague = ()-> _.random(1, 100) <= 15
 
 too_many_people_died = (game)-> game.starved / (game.population + game.starved - game.newcomers) >= 0.45
 
-valid_seed = (game, tick_data)-> 0 <= tick_data.seed and tick_data.seed <= _.min[game.acres, 10 * game.population, game.bushels]
+valid_seed = (game, tick_data)-> 0 <= tick_data.seed and tick_data.seed <= _.min([game.acres, 10 * game.population, game.bushels])
 valid_feed = (game, tick_data)-> 0 <= tick_data.feed and tick_data.feed <= game.bushels
 valid_acres = (game, tick_data)-> -game.acres <= tick_data.acres and tick_data.acres <= game.acres
 
@@ -43,7 +43,7 @@ tick = (context)->
   game.population = game.population - game.starved + game.newcomers;
   game.harvest = _.random(1, 8)
   game.bushels = game.internal_bushels + game.harvest * tick_data.seed
-  game.rats = if has_rat_problems(game) Math.max(0, Math.floor(_.random(1, 3) / 10) * game.bushels)) else 0
+  game.rats = if has_rat_problems(game) then Math.max(0, Math.floor(_.random(1, 3) / 10) * game.bushels) else 0
   game.bushels = game.bushels - game.rats
   game.internal_bushels = game.bushels
   game.price = _.random(1, 10) + 16
@@ -52,8 +52,8 @@ tick = (context)->
   game.ended = game.year is 10
 
   game.perfomance = {
-    avg_starved = game.total_starved / game.year
-    acre_person = game.acres / game.population
+    avg_starved : game.total_starved / game.year
+    acre_person : game.acres / game.population
   }
   return context
 
