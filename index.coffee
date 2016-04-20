@@ -122,7 +122,7 @@ ask_for_feed = (context)->
 
   track_strategy(context, 'ask_for_feed')
   feed = parseInt context.text.replace(/[\+|\s|\-|\D|\,]/g, '')
-  if _.isNumber(feed)m and hammurabi.is_valid_feed(context)
+  if _.isNumber(feed) and hammurabi.is_valid_feed(context)
     context.game_responses.feed = feed
 
   return context.send _.sample(game_questions.feed)
