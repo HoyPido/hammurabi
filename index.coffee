@@ -127,10 +127,10 @@ ask_for_seed = (context)->
 
   track_strategy(context, 'ask_for_seed')
   seed = parseInt context.text.replace(/[\+|\s|\-|\D|\,]/g, '')
-  if _.isNumber(feed)
+  if _.isNumber(seed)
     context.game_responses.seed = seed
 
-  return context.send _.sample(game_questions.feed)
+  return context.send _.sample(game_questions.seed)
 
 
 tick_strategy = (context)->
