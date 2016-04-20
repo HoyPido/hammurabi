@@ -21,13 +21,25 @@ create_game = ()->
 
 has_plague = ()-> _.random(1, 100) <= 15
 
-too_many_people_died = (game)-> game.starved / (game.population + game.starved - game.newcomers) >= 0.45
+too_many_people_died = (game)-> game.total_starved / (game.population + game.starved - game.newcomers) >= 0.45
 
-valid_seed = (game, tick_data)-> 0 <= tick_data.seed and tick_data.seed <= _.min([game.acres, 10 * game.population, game.bushels])
-valid_feed = (game, tick_data)-> 0 <= tick_data.feed and tick_data.feed <= game.bushels
-valid_acres = (game, tick_data)-> -game.acres <= tick_data.acres and tick_data.acres <= game.acres
+is_valid_acre = (context)->
+  game = context.game_status
+  tick_data = context.game_responses
+  if tick_data.acres < 0
+    Math.abs(tick_data.acres) <= game.acres
+  else
+    game.price * tick_data.acres < game.bushels
 
-is_valid_move = (context)-> _.all([valid_seed, valid_feed, valid_acres], (cb)-> cb(context.game_status, context.game_responses))
+is_valid_feed = (context)->
+  game = context.game_status
+  tick_data = context.game_responses
+  0 <= tick_data.feed and tick_data.feed <= (game.bushels - tick_data.acres)
+
+is_valid_seed = (context)->
+  game = context.game_status
+  tick_data = context.game_responses
+  0 <= tick_data.seed and tick_data.seed <= (game.acres + tick_data.acres) and tick_data.seed < 2 * game.bushels and tick_data.seed <= game.population * 10
 
 tick = (context)->
   game = context.game_status
@@ -46,7 +58,7 @@ tick = (context)->
   game.bushels = game.bushels - game.rats
   game.internal_bushels = game.bushels
   game.price = _.random(1, 10) + 16
-  game.acres = game.acres = tick_data.acres
+  game.acres = game.acres + tick_data.acres
   game.starved = too_many_people_died(game)
   game.ended = game.year is 10
 
@@ -58,7 +70,9 @@ tick = (context)->
 
 
 module.exports = {
-  is_valid_move: is_valid_move
+  is_valid_acre: is_valid_acre
+  is_valid_feed: is_valid_feed
+  is_valid_seed: is_valid_seed
   create_game : create_game
   tick: tick
 }
